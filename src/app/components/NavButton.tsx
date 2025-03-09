@@ -1,7 +1,7 @@
 import Link, { LinkProps } from "next/link";
 
 type NavButtonProps = LinkProps & {
-  children?: any;
+  children?: string;
 };
 
 export default function NavButton(props: NavButtonProps) {
