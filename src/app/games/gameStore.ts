@@ -1,0 +1,1 @@
+export const FREETOGAME_URL = "https://www.freetogame.com/api/"
