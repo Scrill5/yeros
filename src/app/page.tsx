@@ -1,3 +1,4 @@
+import Link from "next/link";
 import GButton from "./components/GButton";
 import AppButton from "./components/GButton";
 import NavButton from "./components/NavButton";
@@ -24,12 +25,12 @@ export default function Home() {
       </div>
 
       <div className="flex flex-wrap items-center pt-10">
-        <NavButton href="/games">
+        <Link href="/games">
           <GButton />
-        </NavButton>
-        <NavButton href="/login">
+        </Link>
+        <Link href="/login">
           <GButton>Login</GButton>
-        </NavButton>
+        </Link>
       </div>
     </div>
   );
