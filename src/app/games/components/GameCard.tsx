@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Game } from "../../games/page";
 
 type GameCardProps = Game;
 

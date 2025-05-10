@@ -1,51 +1,63 @@
-export default function Formulario(){
-     return (
-        <div className="flex flex-col items-center pt-8">
-      <form className="flex flex-col w-80 max-w-90 pb-5 bg-neutral-800 rounded-2xl pt-8 items-center gap-3">
-        <div className="flex flex-col items-center gap-3">
-          <img
-            className="bg-white rounded-[110px] w-1/4"
-            src="https://pnghq.com/wp-content/uploads/pnghq.com-green-person-unrestricted-2.png"
-          ></img>
-          <p className="font-black">MEMBER LOGIN</p>
+export default function Formulario() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#0f0f0f]">
+      <form className="bg-[#1a1a1a] p-8 rounded-2xl shadow-lg w-96 max-w-sm">
+        <div className="text-center mb-8">
+          <div className="relative w-24 h-24 mx-auto mb-4">
+            <img
+              src="https://pnghq.com/wp-content/uploads/pnghq.com-green-person-unrestricted-2.png"
+              alt="User"
+              className="w-full h-full rounded-full object-cover"
+            />
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Member Login</h2>
+          <p className="text-gray-400 text-sm">Welcome back! Please login to your account</p>
         </div>
 
-        <div className="flex flex-col items-center pt-6 gap-6">
-          <input
-            placeholder="Username"
-            className="h-10 hover:animate-pulse font-mono rounded-3xl border-2 text-center px-3"
-            type="text"
-          />
-          <input
-            maxLength={10}
-            placeholder="Password"
-            className="h-10 font-mono rounded-3xl hover:animate-pulse border-2 text-center px-3"
-            type="password"
-          />
-        </div>
-
-        <div className="text-sm flex mt-3 gap-5">
+        <div className="space-y-4">
           <div>
-            <p>Forgot Password?</p>
+            <label className="block text-sm text-gray-300 mb-1">Username</label>
+            <input
+              type="text"
+              placeholder="Enter your username"
+              className="w-full px-4 py-3 rounded-lg bg-[#2a2a2a] border border-gray-600 text-white focus:outline-none focus:border-blue-500 transition duration-200"
+            />
           </div>
-          <div className="flex gap-2">
-            <p>Remember me</p>
-            <input className="cursor-pointer" type="checkbox" />
+
+          <div>
+            <label className="block text-sm text-gray-300 mb-1">Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="w-full px-4 py-3 rounded-lg bg-[#2a2a2a] border border-gray-600 text-white focus:outline-none focus:border-blue-500 transition duration-200"
+            />
           </div>
-        </div>
-        <div className="flex flex-col items-center w-full pt-8">
-          <button className="w-[50%] hover:animate-bounce bg-[#afafaf] h-10 rounded-3xl text-black cursor-pointer">
+
+          <div className="flex items-center justify-between text-sm text-gray-400">
+            <div className="flex items-center">
+              <input type="checkbox" className="mr-2" />
+              <span>Remember me</span>
+            </div>
+            <a href="#" className="hover:text-blue-400 transition-colors">Forgot Password?</a>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 font-semibold"
+          >
             Login
           </button>
-        </div>
-        <div className="flex items-center my-5 flex-col gap-1">
-          <p className="text-sm text-[#ffffff5e]">Not a member?</p>
-          <button className="border-1 py-1 px-3 rounded-3xl text-sm cursor-pointer ">
-            Create account
-          </button>
+
+          <div className="text-center mt-6">
+            <p className="text-gray-400">
+              Don't have an account?{' '}
+              <a href="#" className="text-blue-400 hover:text-blue-500 transition-colors">
+                Create Account
+              </a>
+            </p>
+          </div>
         </div>
       </form>
     </div>
-     )
-    
+  )
 }
