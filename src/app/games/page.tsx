@@ -19,25 +19,29 @@ export interface Game {
 export default function GamesPage() {
   const [games, setGames] = useState<Game[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [allGames, setAllGames] = useState<Game[]>([]);
 
-  async function loadGames() {
+  async function loadFilteredGames() {
     try {
-      const response = await fetch("/api/games"); // Solicitud al endpoint de API
+      const params = new URLSearchParams();
+      if (searchTerm) params.append('search', searchTerm);
+      if (selectedCategory) params.append('category', selectedCategory);
+
+      const response = await fetch(`/api/games?${params.toString()}`);
       if (!response.ok) {
         throw new Error("Failed to fetch games");
       }
-      const gamesData = await response.json();
-      setAllGames(gamesData);
-      setGames(gamesData);
+      const filteredGames = await response.json();
+      setGames(filteredGames);
     } catch (error) {
       console.error("Error fetching games:", error);
     }
   }
 
   useEffect(() => {
-    loadGames();
-  }, []);
+    loadFilteredGames();
+  }, [searchTerm, selectedCategory]);
 
   useEffect(() => {
     if (selectedCategory) {
@@ -52,17 +56,28 @@ export default function GamesPage() {
     <div>
       <div className="flex justify-between items-center p-4 m-auto w-[95%]">
         <h1 className="text-2xl font-bold">Juegos</h1>
-        <select
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          className="bg-[#0f0f0f] px-3 py-2 border-[#7d7d7d] border-b-[0.3px] hover:bg-neutral-900 rounded-t-sm"
-        >
-          <option value="">Todas las categorías</option>
-          <option value="action">Acción</option>
-          <option value="rpg">RPG</option>
-          <option value="sports">Deportes</option>
-          <option value="strategy">Estrategia</option>
-        </select>
+        <div className="flex gap-4 items-center">
+          <input
+            type="text"
+            placeholder="Buscar juego..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="bg-[#0f0f0f] px-3 py-2 border-[#7d7d7d] border-b-[0.3px] hover:bg-neutral-900 rounded-t-sm flex-1"
+          />
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="bg-[#0f0f0f] px-3 py-2 border-[#7d7d7d] border-b-[0.3px] hover:bg-neutral-900 rounded-t-sm"
+          >
+            <option value="">Todas las categorías</option>
+            <option value="action">Acción</option>
+            <option value="rpg">RPG</option>
+            <option value="sports">Deportes</option>
+            <option value="strategy">Estrategia</option>
+            <option value="shooter">FPS</option>
+            <option value="mmo">MMO</option>
+          </select>
+        </div>
       </div>
       <div className="flex gap-4 flex-wrap p-4 m-auto w-[95%]">
         {games.length === 0 ? (
