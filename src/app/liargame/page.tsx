@@ -126,14 +126,13 @@ export default function Juego() {
   // funcion para movimiento
 
   const moverJugadorADestino = (fila: number, col: string) => {
-    if (faseTurno !== "movimiento" || movimientosRestantes <= 0) return;
+    if (faseTurno !== "movimiento") return;
 
     const actual = jugadores[turno];
     const pos = actual.posInicial;
     if (!pos) return;
 
     const rival = turno === "azul" ? jugadores.rojo : jugadores.azul;
-    //  if (rival.posInicial?.fila === fila && rival.posInicial.col === col) return;
 
     const colIndexOrigen = columnas.indexOf(pos.col);
     const colIndexDestino = columnas.indexOf(col);
@@ -141,6 +140,9 @@ export default function Juego() {
     const filaDiff = Math.abs(pos.fila - fila);
 
     const totalMov = colDiff + filaDiff;
+
+    // ✅ Nueva validación: que tenga suficiente energía para este movimiento
+    if (movimientosRestantes < totalMov || movimientosRestantes <= 0) return;
 
     // No se puede mover más de 3 espacios en total
     if (totalMov > 3) return;
@@ -159,6 +161,7 @@ export default function Juego() {
     setJugadores((prev) => ({ ...prev, [turno]: actualizado }));
     setMovimientosRestantes((prev) => prev - totalMov);
   };
+
   const terminarTurno = () => {
     setTurno((prev) => (prev === "azul" ? "rojo" : "azul"));
     setPreguntaUsada(false);
