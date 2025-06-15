@@ -50,7 +50,7 @@ export default function Formulario() {
 
           <div className="text-center mt-6">
             <p className="text-gray-400">
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <a href="#" className="text-blue-400 hover:text-blue-500 transition-colors">
                 Create Account
               </a>
