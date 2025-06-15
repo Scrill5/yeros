@@ -468,7 +468,7 @@ export default function Juego() {
                     {/* Indicador del jugador rojo */}
                     {jugadores.rojo.posInicial?.fila === fila &&
                       jugadores.rojo.posInicial?.col === col && (
-                        <div className="w-3 h-3 bg-red-500 rounded-full absolute top-1 right-1"></div>
+                        <div className="w-3 h-3 bg-red-500 rounded-full absolute left-1"></div>
                       )}
                   </div>
                 );
