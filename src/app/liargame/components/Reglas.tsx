@@ -104,9 +104,10 @@ function Reglas() {
               <strong>Mensajes y Notificaciones:</strong> Cuando un jugador
               encuentra el tesoro rival, aparecerá un mensaje a pantalla
               completa felicitando al ganador. Si la búsqueda no tiene éxito, se
-              mostrará un mensaje breve indicando "Tesoro no encontrado". Al
-              finalizar el juego sin un ganador por falta de energía, se
-              mostrará un mensaje indicando que el juego terminó sin ganador.
+              mostrará un mensaje breve indicando &quot;Tesoro no
+              encontrado&quot;. Al finalizar el juego sin un ganador por falta
+              de energía, se mostrará un mensaje indicando que el juego terminó
+              sin ganador.
             </li>
             <li>
               <strong>Consejos y Estrategias:</strong> Administra bien tu
